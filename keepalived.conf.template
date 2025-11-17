@@ -1,0 +1,20 @@
+vrrp_instance VI_1 {
+    state ${KEEPALIVED_STATE}
+    interface ${KEEPALIVED_INTERFACE}
+    virtual_router_id ${KEEPALIVED_ROUTER_ID}
+    priority ${KEEPALIVED_PRIORITY}
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass ${KEEPALIVED_AUTH_PASS}
+    }
+
+    unicast_src_ip ${KEEPALIVED_UNICAST_SRC_IP}
+    unicast_peer {
+        @KEEPALIVED_UNICAST_PEERS@
+    }
+
+    virtual_ipaddress {
+        ${KEEPALIVED_VIRTUAL_IP}
+    }
+}
