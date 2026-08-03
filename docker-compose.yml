@@ -1,9 +1,14 @@
 services:
   keepalived:
-    image: ghcr.io/bob-park/keepalived
+    image: ghcr.io/bob-park/keepalived:${KEEPALIVED_VERSION}
     build:
       dockerfile: ./Dockerfile
+      args:
+        - KEEPALIVED_VERSION=${KEEPALIVED_VERSION}
       x-bake:
         platforms:
           - linux/amd64
           - linux/arm64
+        tags:
+          - ghcr.io/bob-park/keepalived:${KEEPALIVED_VERSION}
+          - ghcr.io/bob-park/keepalived:latest
